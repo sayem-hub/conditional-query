@@ -1,0 +1,60 @@
+Assignment: 
+Create a Database name  user_information.
+
+In Users table 5 column:  id  , username , age , phone, address, salary , country  ,created_at, updated_at
+        1. Find users who live in same country 
+        2. Show data  by high to low salary 
+        3. Show data who get the highest salary
+        4. Show data who get the lowest 
+        5. Show how many table you have 
+        6. Show me how many users get a salary range of ( 5000 -15000).
+
+
+
+    Answers:
+    ===Table create query===
+    CREATE TABLE Users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(60) NOT NULL,
+        age INTEGER,
+        phone VARCHAR(20),
+        address VARCHAR(255),
+        salary DECIMAL(10,2),
+        country VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+
+    ===Data insert query===
+    INSERT INTO users (username, age, phone, address, salary, country) VALUES
+        ('abu_sayem', '25', '01723857074', 'Dinajpur, Bangladesh', 60000, 'Bangladesh'),
+        ('rayhan_kabir', '27', '01946405378', 'New Delhi, India', 53000, 'India'),
+        ('ashik_khan', '24', '01625897464', 'Washington, USA', 57000, 'USA'),
+        ('borhan_uddin', '28', '01625897464', 'Tokeyo, Japan', 45000, 'Japan'),
+        ('rokon_uddin', '25', '01725897464', 'Mumbai, India', 53000, 'India'),
+        ('shila_akter', '26', '01825897464', 'Osaka, Japan', 66000, 'Japan'),
+        ('parvin_begum', '29', '01925897464', 'Beiging, China', 50000, 'China'),
+        ('lopa_akter', '30', '01525897464', 'Gazipur, Bangladesh', 55000, 'Bangladesh'),
+        ('komol_sarker', '32', '01425897464', 'Newyork DC, USA', 54000, 'USA'),
+        ('riaz_alam', '33', '01225897464', 'Rangpur, Bangladesh', 55000, 'Bangladesh'),
+        ('John_kabir', '36', '01225897464', 'Chicago, USA', 40000, 'USA'),
+        ('shomser_ali', '33', '01225897464', 'Dhaka, Bangladesh', 35000, 'Bangladesh');
+
+    ===1. Find users who live in same country ===
+    Query: SELECT * FROM users WHERE country = 'Bangladesh';
+
+      ===2. Show data  by high to low salary ===
+      Query: SELECT * FROM `users` ORDER BY salary DESC;
+
+       ===3. Show data who get the highest salary ===
+       Query: SELECT MAX(salary) FROM users;
+
+        ===4. Show data who get the lowest ===
+       Query: SELECT MIN(salary) FROM users;
+
+        ===5. Show how many table you have===
+       Query: SELECT COUNT(*) FROM information_schema.TABLES
+                    WHERE TABLE_SCHEMA='user_information';
+
+        ===6. Show me how many users get a salary range of ( 5000 -15000)===
+       Query: SELECT * FROM users
+                    WHERE salary BETWEEN 5000 AND 15000;
